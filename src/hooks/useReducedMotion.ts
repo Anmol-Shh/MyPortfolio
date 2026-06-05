@@ -42,16 +42,8 @@ export function useReducedMotion(): boolean {
     }
 
     // Modern browsers
-    if (mediaQuery.addEventListener) {
-      mediaQuery.addEventListener('change', handleChange)
-      return () => mediaQuery.removeEventListener('change', handleChange)
-    }
-    
-    // Fallback for older browsers
-    // @ts-expect-error - addListener is deprecated but needed for older browsers
-    mediaQuery.addListener(handleChange)
-    // @ts-expect-error - removeListener is deprecated but needed for older browsers
-    return () => mediaQuery.removeListener(handleChange)
+    mediaQuery.addEventListener('change', handleChange)
+    return () => mediaQuery.removeEventListener('change', handleChange)
   }, [])
 
   return prefersReducedMotion

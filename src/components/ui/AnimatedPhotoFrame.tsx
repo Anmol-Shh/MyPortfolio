@@ -29,7 +29,7 @@ export function AnimatedPhotoFrame({ src, alt, onError }: AnimatedPhotoFrameProp
 
   const hoverTransition = prefersReducedMotion
     ? { duration: 0 }
-    : { duration: 0.2, ease: 'easeOut' }
+    : { duration: 0.2, ease: 'easeOut' as const }
 
   return (
     <motion.div

@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import type { Project, TechTag } from '../../types'
-import { GradientBorder } from './GradientBorder'
 import { microInteractions, microTransitions } from '../../lib/animations'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 

@@ -73,7 +73,7 @@ export interface ScrollRevealOptions {
  * ```
  */
 export function useScrollReveal(options: ScrollRevealOptions = {}): {
-  ref: RefObject<Element>
+  ref: RefObject<Element | null>
   isVisible: boolean
 } {
   const {

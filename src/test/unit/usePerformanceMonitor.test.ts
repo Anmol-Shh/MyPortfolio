@@ -6,13 +6,13 @@ import { PERFORMANCE_BUDGET } from '../../lib/animations'
 describe('usePerformanceMonitor', () => {
   beforeEach(() => {
     // Mock requestAnimationFrame
-    global.requestAnimationFrame = vi.fn((callback) => {
+    globalThis.requestAnimationFrame = vi.fn((_callback) => {
       // Don't actually call the callback to avoid infinite loops in tests
       return 1
     })
 
     // Mock cancelAnimationFrame
-    global.cancelAnimationFrame = vi.fn()
+    globalThis.cancelAnimationFrame = vi.fn()
 
     // Mock performance.now()
     vi.spyOn(performance, 'now').mockReturnValue(0)
@@ -34,7 +34,7 @@ describe('usePerformanceMonitor', () => {
   it('should start monitoring on mount', () => {
     renderHook(() => usePerformanceMonitor())
     
-    expect(global.requestAnimationFrame).toHaveBeenCalled()
+    expect(globalThis.requestAnimationFrame).toHaveBeenCalled()
   })
 
   it('should cancel animation frame on unmount', () => {
@@ -42,7 +42,7 @@ describe('usePerformanceMonitor', () => {
     
     unmount()
     
-    expect(global.cancelAnimationFrame).toHaveBeenCalled()
+    expect(globalThis.cancelAnimationFrame).toHaveBeenCalled()
   })
 
   it('should accept custom options', () => {

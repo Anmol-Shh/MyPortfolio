@@ -1,11 +1,11 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import { renderHook, waitFor } from '@testing-library/react'
+import { renderHook } from '@testing-library/react'
 import { useScrollReveal } from '../../hooks/useScrollReveal'
 
 describe('useScrollReveal', () => {
   beforeEach(() => {
     // Mock IntersectionObserver
-    global.IntersectionObserver = vi.fn().mockImplementation(() => ({
+    globalThis.IntersectionObserver = vi.fn().mockImplementation(() => ({
       observe: vi.fn(),
       disconnect: vi.fn(),
       unobserve: vi.fn(),
@@ -30,7 +30,7 @@ describe('useScrollReveal', () => {
 
   it('should handle missing IntersectionObserver gracefully', () => {
     // @ts-expect-error - Testing undefined IntersectionObserver
-    global.IntersectionObserver = undefined
+    globalThis.IntersectionObserver = undefined
 
     const { result } = renderHook(() => useScrollReveal())
     

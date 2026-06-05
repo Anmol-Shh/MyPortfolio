@@ -96,8 +96,6 @@ export function usePerformanceMonitor(
     isPerformant: true,
   })
 
-  const frameCountRef = useRef(0)
-  const lastTimeRef = useRef(performance.now())
   const rafIdRef = useRef<number | null>(null)
   const hasLoggedWarningRef = useRef(false)
 
